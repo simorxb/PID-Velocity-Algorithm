@@ -1,42 +1,43 @@
 % Access the signals from out.logsout
 
-omega = out.logsout.get('omega').Values.Data;
-t_omega = out.logsout.get('omega').Values.Time;
+voltage = out.logsout.get('voltage').Values.Data;
+t_voltage = out.logsout.get('voltage').Values.Time;
 
-current = out.logsout.get('current').Values.Data;
-t_current = out.logsout.get('current').Values.Time;
-
-omega_est = out.logsout.get('omega_est').Values.Data(:);
-t_omega_est = out.logsout.get('omega_est').Values.Time;
+tq_dist = out.logsout.get('tq_dist').Values.Data;
+t_tq_dist = out.logsout.get('tq_dist').Values.Time;
 
 theta = out.logsout.get('theta').Values.Data(:);
 t_theta = out.logsout.get('theta').Values.Time;
 
-theta_est = out.logsout.get('theta_est').Values.Data(:);
-t_theta_est = out.logsout.get('theta_est').Values.Time;
+theta_stp = out.logsout.get('theta_stp').Values.Data(:);
+t_theta_stp = out.logsout.get('theta_stp').Values.Time;
 
 theta_meas = out.logsout.get('theta_meas').Values.Data;
 t_theta_meas = out.logsout.get('theta_meas').Values.Time;
 
-noise = out.logsout.get('noise').Values.Data;
-t_noise = out.logsout.get('noise').Values.Time;
-
-% Plot for omega
+% Plot for theta
 figure;
-plot(t_omega, omega, 'LineWidth', 2);
+subplot(3, 1, 1);
+plot(t_theta_stp, theta_stp, '--', 'LineWidth', 2);
 hold on;
-plot(t_omega_est, omega_est, 'LineWidth', 2);
+plot(t_theta_meas, theta_meas, 'LineWidth', 2);
 hold off;
-xlabel('Time (s)');
-ylabel('Angular speed - \omega (rad/s)');
-legend({'Real', 'Estimated by the kalman Filter'}, 'FontSize', 12);
+ylabel('Angular position - \theta (rad)');
+legend({'Setpoint', 'Measured'}, 'FontSize', 12);
 set(gca, 'FontSize', 12);
 grid on;
 
-% Plot for noise
-figure;
-plot(t_noise, noise*180/pi, 'LineWidth', 2);
+% Plot for voltage
+subplot(3, 1, 2);
+plot(t_voltage, voltage, 'LineWidth', 2);
+ylabel('Input Voltage (V)');
+set(gca, 'FontSize', 12);
+grid on;
+
+% Plot for Torque Disturbance
+subplot(3, 1, 3);
+plot(t_tq_dist, tq_dist, 'LineWidth', 2);
 xlabel('Time (s)');
-ylabel('Measurement noise (deg)');
+ylabel('Torque Disturbance (N·m)');
 set(gca, 'FontSize', 12);
 grid on;
