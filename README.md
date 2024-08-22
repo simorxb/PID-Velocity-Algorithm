@@ -18,6 +18,8 @@ The Velocity PID algorithm offers an alternative to the traditional PID controll
 
 In the discrete-time domain, the algorithm is adapted using discrete approximations for the derivatives.
 
+![image](https://github.com/user-attachments/assets/ad035f62-6eb6-4044-8bd2-bec4daf549bf)
+
 ### Advantages of Velocity PID
 - **Bumpless Transfer**: Easier to switch between controllers or from manual to automatic modes without causing sudden changes in the system.
 - **Gain Scheduling**: Facilitates smoother changes in controller gains, avoiding bumps in the control signal.
@@ -26,3 +28,9 @@ In the discrete-time domain, the algorithm is adapted using discrete approximati
 ### Implementation Details
 - **DC Motor Parameters**: Detailed parameters for the DC motor model are provided, and the system is simulated using Simscape in MATLAB.
 - **Simulink Model**: A Simulink model is provided to simulate the Velocity PID control, incorporating a back-calculation anti-windup technique to manage integrator windup.
+
+## Author
+This project is developed by Simone Bertoni. Learn more about my work on my personal website - [Simone Bertoni - Control Lab](https://simonebertonilab.com/).
+
+## Contact
+For further communication, connect with me on [LinkedIn](https://www.linkedin.com/in/simone-bertoni-control-eng/).
